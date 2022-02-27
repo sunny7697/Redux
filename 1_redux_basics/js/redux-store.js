@@ -25,18 +25,18 @@ const reservationHistory = (oldReservationList = [], action) => {
     return [...oldReservationList, action.payload.name];
   } else if (action.type === "CANCEL_BOOKING") {
     return oldReservationList.filter((record) => {
-      return record !== action.payload.name;
+      return record.name !== action.payload.name;
     });
   }
 
   return oldReservationList;
 };
-const cancellationHistory = (oldReservationList = [], action) => {
+const cancellationHistory = (oldCancellationList = [], action) => {
   if (action.type === "CANCEL_BOOKING") {
-    return [...oldReservationList, action.payload.name];
+    return [...oldCancellationList, action.payload.name];
   }
 
-  return oldReservationList;
+  return oldCancellationList;
 };
 const accounting = (totalMoney = 100, action) => {
   if (action.type === "NEW_BOOKING") {
